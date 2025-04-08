@@ -6,7 +6,7 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            overflow-x: auto; /* Allow horizontal scrolling if needed */
+            overflow-x: auto;
             background: #f0f0f0;
             perspective: 1000px;
         }
@@ -15,7 +15,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: #69b3a2; /* Root color */
+            background-color: #69b3a2;
             color: white;
             text-align: center;
             padding: 20px 0;
@@ -27,24 +27,24 @@
         }
         .container {
             width: 100%;
-            height: calc(100vh - 80px); /* Adjust for header */
-            margin-top: 80px; /* Space for fixed header */
+            height: calc(100vh - 80px);
+            margin-top: 80px;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
         }
         .person {
-            width: 250px; /* Slightly smaller for more children */
-            min-width: 200px; /* Minimum width for readability */
+            width: 250px;
+            min-width: 200px;
             height: 120px;
             margin: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
-            font-size: 24px; /* Adjusted for smaller rectangles */
-            text-align: center; /* Center wrapped text */
+            font-size: 24px;
+            text-align: center;
             cursor: pointer;
             transition: opacity 1s ease, transform 0.3s ease, box-shadow 0.3s ease;
             transform: translateZ(20px);
@@ -52,7 +52,7 @@
             border-radius: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5),
                         -1px -1px 2px rgba(255, 255, 255, 0.3);
-            padding: 10px; /* Padding for wrapped text */
+            padding: 10px;
             box-sizing: border-box;
         }
         .person:hover {
@@ -63,9 +63,9 @@
             display: flex;
             flex-direction: row;
             justify-content: center;
-            flex-wrap: nowrap; /* Keep all in one row */
-            gap: 10px; /* Space between children */
-            overflow-x: auto; /* Scroll if too wide */
+            flex-wrap: nowrap;
+            gap: 10px;
+            overflow-x: auto;
             width: 100%;
             padding: 10px;
         }
@@ -75,10 +75,10 @@
         .visible {
             opacity: 1;
         }
-        .gen1 { background-color: #1b263b; } /* Usman */
-        .gen2 { background-color: #57a0ce; } /* His children */
-        .gen3 { background-color: #ffa500; } /* Wives and others */
-        .gen4 { background-color: #ff7575; } /* Deepest level */
+        .gen1 { background-color: #1b263b; }
+        .gen2 { background-color: #57a0ce; }
+        .gen3 { background-color: #ffa500; }
+        .gen4 { background-color: #ff7575; }
         #backButton {
             position: fixed;
             top: 15px;
@@ -94,7 +94,7 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
             border-radius: 10px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            z-index: 3; /* Above header */
+            z-index: 3;
         }
         #backButton:hover {
             transform: translateZ(30px);
@@ -108,7 +108,7 @@
     <button id="backButton" onclick="goBack()" style="display: none;">Back</button>
 
     <script>
-        // The Adewunmi Lineage data with Usman as the first node
+        // Updated Adewunmi Lineage data with revised Ali Adewunmi section
         const familyTree = {
             id: 1,
             name: "Usman Adewunmi",
@@ -133,27 +133,27 @@
                 },
                 {
                     id: 7,
-                    name: "Ali Adewunmi (Had Four Wives)",
+                    name: "Ali Adewunmi",
                     level: "gen2",
                     children: [
                         {
                             id: 8,
-                            name: "1st Wife: Wolemotu Adedoyin (Iya Idumota)",
+                            name: "1st Wife: Wulemotu Adedoyin (Iya Idumota)",
                             level: "gen3",
                             children: [
-                                { id: 9, name: "Tamuriat Adewunmi Ajayi", level: "gen4" },
+                                { id: 9, name: "Tamuriatu Adewunmi Ajayi", level: "gen4" },
                                 { id: 10, name: "Ashimiyu Bolaji Adewunmi", level: "gen4" },
-                                { id: 11, name: "Sulikufuli Adewunmi", level: "gen4" }
+                                { id: 11, name: "Sulikufuli Ishola Adewunmi", level: "gen4" }
                             ]
                         },
                         {
                             id: 12,
-                            name: "2nd Wife: Ayisat Adewunmi (Iya Agege)",
+                            name: "2nd Wife: Ayisatu Adewunmi (Iya Agege)",
                             level: "gen3",
                             children: [
-                                { id: 13, name: "Taofeek Adewunmi", level: "gen4" },
-                                { id: 14, name: "Wahab Damilare Adewunmi", level: "gen4" },
-                                { id: 15, name: "Ganiu Idowu Adewunmi", level: "gen4" }
+                                { id: 13, name: "Taofiki Adewunmi", level: "gen4" },
+                                { id: 14, name: "Wahabi Damilare Adewunmi", level: "gen4" },
+                                { id: 15, name: "Ganiyu Idowu Adewunmi", level: "gen4" }
                             ]
                         },
                         {
@@ -161,19 +161,19 @@
                             name: "3rd Wife: Adedoja Adewunmi (Iya Mewa)",
                             level: "gen3",
                             children: [
-                                { id: 17, name: "Yahya Adewunmi (Baba Porta)", level: "gen4" },
+                                { id: 17, name: "Yisawu Adewunmi (Baba Pota)", level: "gen4" },
                                 { id: 18, name: "Nurudeen Adewunmi (Baba Ilupeju)", level: "gen4" },
-                                { id: 19, name: "Afusat Adewunmi", level: "gen4" },
-                                { id: 20, name: "Muinat Adewunmi", level: "gen4" }
+                                { id: 19, name: "Afusatu Adewunmi", level: "gen4" },
+                                { id: 20, name: "Muinatu Adewunmi", level: "gen4" }
                             ]
                         },
                         {
                             id: 21,
-                            name: "4th Wife: Munirat Adewunmi (Iya Ifo)",
+                            name: "4th Wife: Munira Adewunmi (Iya Ifo)",
                             level: "gen3",
                             children: [
-                                { id: 22, name: "Idayat Adewunmi", level: "gen4" },
-                                { id: 23, name: "Wosilat Adewunmi (Iya Owode)", level: "gen4" },
+                                { id: 22, name: "Idaya Adewunmi", level: "gen4" },
+                                { id: 23, name: "Wosila Adewunmi (Iya Owode)", level: "gen4" },
                                 { id: 24, name: "Taliat Adewunmi", level: "gen4" }
                             ]
                         }
