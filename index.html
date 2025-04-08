@@ -1,43 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Family Tree with 3D Rectangles and Ripple</title>
+    <title>The Adewunmi Lineage</title>
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            overflow: hidden;
+            overflow-x: auto; /* Allow horizontal scrolling if needed */
             background: #f0f0f0;
             perspective: 1000px;
-            position: relative;
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #69b3a2; /* Root color */
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 36px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5),
+                        -1px -1px 2px rgba(255, 255, 255, 0.3);
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
         .container {
-            position: relative;
             width: 100%;
-            height: 100vh;
+            height: calc(100vh - 80px); /* Adjust for header */
+            margin-top: 80px; /* Space for fixed header */
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            z-index: 1;
         }
         .person {
-            width: 300px;
-            height: 150px;
-            margin: 15px;
+            width: 250px; /* Slightly smaller for more children */
+            min-width: 200px; /* Minimum width for readability */
+            height: 120px;
+            margin: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
-            font-size: 32px;
+            font-size: 24px; /* Adjusted for smaller rectangles */
+            text-align: center; /* Center wrapped text */
             cursor: pointer;
-            transition: opacity 0.5s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
+            transition: opacity 1s ease, transform 0.3s ease, box-shadow 0.3s ease;
             transform: translateZ(20px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 6px 6px rgba(0, 0, 0, 0.2);
             border-radius: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5),
                         -1px -1px 2px rgba(255, 255, 255, 0.3);
+            padding: 10px; /* Padding for wrapped text */
+            box-sizing: border-box;
         }
         .person:hover {
             transform: translateZ(30px);
@@ -47,7 +63,11 @@
             display: flex;
             flex-direction: row;
             justify-content: center;
-            flex-wrap: wrap;
+            flex-wrap: nowrap; /* Keep all in one row */
+            gap: 10px; /* Space between children */
+            overflow-x: auto; /* Scroll if too wide */
+            width: 100%;
+            padding: 10px;
         }
         .hidden {
             opacity: 0;
@@ -55,86 +75,118 @@
         .visible {
             opacity: 1;
         }
-        .root { background-color: red; }
-        .gen1 { background-color: green; }
-        .gen2 { background-color: blue; }
+        .gen1 { background-color: #1b263b; } /* Usman */
+        .gen2 { background-color: #57a0ce; } /* His children */
+        .gen3 { background-color: #ffa500; } /* Wives and others */
+        .gen4 { background-color: #ff7575; } /* Deepest level */
         #backButton {
             position: fixed;
             top: 15px;
             right: 15px;
-            padding: 15px 30px;
+            padding: 20px 40px;
             background-color: #333;
             color: white;
             border: none;
             cursor: pointer;
-            font-size: 20px;
+            font-size: 24px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             transform: translateZ(20px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
             border-radius: 10px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            z-index: 3; /* Above header */
         }
         #backButton:hover {
             transform: translateZ(30px);
             box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
         }
-        .ripple {
-            position: absolute;
-            background: rgba(0, 191, 255, 0.3);
-            border-radius: 50%;
-            pointer-events: none;
-            animation: ripple 1s ease-out forwards;
-            z-index: 0;
-        }
-        @keyframes ripple {
-            0% {
-                width: 0;
-                height: 0;
-                opacity: 0.5;
-            }
-            100% {
-                width: 1000px;
-                height: 1000px;
-                opacity: 0;
-            }
-        }
     </style>
 </head>
 <body>
+    <div class="header">The Adewunmi Lineage</div>
     <div class="container" id="treeContainer"></div>
-    <button id="backButton" onclick="goBack()">Back</button>
+    <button id="backButton" onclick="goBack()" style="display: none;">Back</button>
 
     <script>
-        // Family tree data
+        // The Adewunmi Lineage data with Usman as the first node
         const familyTree = {
             id: 1,
-            name: "John Smith",
-            level: "root",
+            name: "Usman Adewunmi",
+            level: "gen1",
             children: [
                 {
                     id: 2,
-                    name: "Mary Johnson",
-                    level: "gen1",
+                    name: "Umuliari Adewunmi Ratibi",
+                    level: "gen2",
                     children: [
-                        { id: 4, name: "Tom Johnson", level: "gen2" },
-                        { id: 5, name: "Sara Johnson", level: "gen2" }
+                        { id: 3, name: "Kareem Ratibi (Only Child)", level: "gen3" }
                     ]
                 },
                 {
-                    id: 3,
-                    name: "Peter Smith",
-                    level: "gen1",
+                    id: 4,
+                    name: "Kareemu Adewunmi",
+                    level: "gen2",
                     children: [
-                        { id: 6, name: "Lisa Smith", level: "gen2" },
-                        { id: 7, name: "Mike Smith", level: "gen2" }
+                        { id: 5, name: "Mistura Alukimba", level: "gen3" },
+                        { id: 6, name: "Abibat Oganij", level: "gen3" }
+                    ]
+                },
+                {
+                    id: 7,
+                    name: "Ali Adewunmi (Had Four Wives)",
+                    level: "gen2",
+                    children: [
+                        {
+                            id: 8,
+                            name: "1st Wife: Wolemotu Adedoyin (Iya Idumota)",
+                            level: "gen3",
+                            children: [
+                                { id: 9, name: "Tamuriat Adewunmi Ajayi", level: "gen4" },
+                                { id: 10, name: "Ashimiyu Bolaji Adewunmi", level: "gen4" },
+                                { id: 11, name: "Sulikufuli Adewunmi", level: "gen4" }
+                            ]
+                        },
+                        {
+                            id: 12,
+                            name: "2nd Wife: Ayisat Adewunmi (Iya Agege)",
+                            level: "gen3",
+                            children: [
+                                { id: 13, name: "Taofeek Adewunmi", level: "gen4" },
+                                { id: 14, name: "Wahab Damilare Adewunmi", level: "gen4" },
+                                { id: 15, name: "Ganiu Idowu Adewunmi", level: "gen4" }
+                            ]
+                        },
+                        {
+                            id: 16,
+                            name: "3rd Wife: Adedoja Adewunmi (Iya Mewa)",
+                            level: "gen3",
+                            children: [
+                                { id: 17, name: "Yahya Adewunmi (Baba Porta)", level: "gen4" },
+                                { id: 18, name: "Nurudeen Adewunmi (Baba Ilupeju)", level: "gen4" },
+                                { id: 19, name: "Afusat Adewunmi", level: "gen4" },
+                                { id: 20, name: "Muinat Adewunmi", level: "gen4" }
+                            ]
+                        },
+                        {
+                            id: 21,
+                            name: "4th Wife: Munirat Adewunmi (Iya Ifo)",
+                            level: "gen3",
+                            children: [
+                                { id: 22, name: "Idayat Adewunmi", level: "gen4" },
+                                { id: 23, name: "Wosilat Adewunmi (Iya Owode)", level: "gen4" },
+                                { id: 24, name: "Taliat Adewunmi", level: "gen4" }
+                            ]
+                        }
                     ]
                 }
             ]
         };
 
-        // Track current state
-        let currentNode = { ...familyTree }; // Clone to avoid mutating original
+        // State management
+        let currentNode = familyTree;
         let history = [];
+
+        // DOM elements
         const container = document.getElementById('treeContainer');
         const backButton = document.getElementById('backButton');
 
@@ -144,65 +196,49 @@
             div.className = `person ${member.level}`;
             div.textContent = member.name;
             div.dataset.id = member.id;
-            div.addEventListener('click', (e) => {
-                showChildren(member);
-                createRipple(e);
-            });
+            div.addEventListener('click', () => showChildren(member));
             return div;
         }
 
-        // Function to create ripple effect
-        function createRipple(event) {
-            const ripple = document.createElement('div');
-            ripple.className = 'ripple';
-            const rect = event.target.getBoundingClientRect();
-            const x = event.clientX - rect.left; // Click position relative to rectangle
-            const y = event.clientY - rect.top;
-            ripple.style.left = `${x - 500}px`; // Center ripple (half of max width)
-            ripple.style.top = `${y - 500}px`; // Center ripple (half of max height)
-            ripple.style.transform = 'translate(-50%, -50%)'; // Adjust for true centering
-            document.body.appendChild(ripple);
-            setTimeout(() => ripple.remove(), 1000);
-        }
-
-        // Function to render the current node and its children
+        // Function to render the tree
         function renderTree(node) {
             container.innerHTML = '';
             const parentRect = createRectangle(node);
             parentRect.classList.add('visible');
             container.appendChild(parentRect);
 
-            if (node.children && node.expanded) {
+            if (node.children && history.length > 0) {
                 const childrenContainer = document.createElement('div');
                 childrenContainer.className = 'children-row';
                 node.children.forEach(child => {
                     const childRect = createRectangle(child);
                     childRect.classList.add('hidden');
                     childrenContainer.appendChild(childRect);
-                    setTimeout(() => childRect.classList.replace('hidden', 'visible'), 10);
+                    setTimeout(() => childRect.classList.add('visible'), 10);
                 });
                 container.appendChild(childrenContainer);
             }
         }
 
-        // Function to show children with fade-in
+        // Function to show children
         function showChildren(member) {
             if (member.children) {
-                history.push({ ...currentNode }); // Save current state
-                currentNode = { ...member, expanded: true }; // Clone member and expand
+                history.push(currentNode);
+                currentNode = member;
                 renderTree(currentNode);
                 backButton.style.display = 'block';
             }
         }
 
-        // Function to go back with fade-out
+        // Function to go back
         function goBack() {
             if (history.length > 0) {
                 const childrenRow = container.querySelector('.children-row');
                 if (childrenRow) {
-                    const children = childrenRow.children;
-                    Array.from(children).forEach(child => {
-                        child.classList.replace('visible', 'hidden');
+                    const children = Array.from(childrenRow.children);
+                    children.forEach(child => {
+                        child.classList.remove('visible');
+                        child.classList.add('hidden');
                     });
                     setTimeout(() => {
                         currentNode = history.pop();
@@ -210,13 +246,7 @@
                         if (history.length === 0) {
                             backButton.style.display = 'none';
                         }
-                    }, 500);
-                } else {
-                    currentNode = history.pop();
-                    renderTree(currentNode);
-                    if (history.length === 0) {
-                        backButton.style.display = 'none';
-                    }
+                    }, 1000);
                 }
             }
         }
