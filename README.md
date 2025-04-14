@@ -3,8 +3,8 @@
 This project is an interactive family tree visualization for "The Adewunmi Lineage," built with HTML, CSS, and JavaScript. It displays the lineage starting with Usman Adewunmi, with a fixed header "The Adewunmi Lineage" at the top, and allows users to explore generations through clickable 3D rectangles.
 
 ## Live Demo
-View the family tree live at: [https://username.github.io](https://username.github.io)  
-*(Replace "username" with your actual GitHub username.)*
+View the family tree live at: [https://edayor.github.io/Family-tree-adewumi/](https://edayor.github.io/Family-tree-adewumi/)  
+
 
 ## Features
 - **Fixed Header**: "The Adewunmi Lineage" remains at the top of the page.
@@ -58,4 +58,4 @@ This project is open-source and available under the [MIT License](LICENSE). Feel
 
 ---
 
-*Last updated: April 08, 2025*
+*Last updated: April 14, 2025*
