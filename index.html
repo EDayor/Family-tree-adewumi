@@ -19,7 +19,7 @@
             color: white;
             text-align: center;
             padding: 20px 0;
-            font-size: 36px;
+            font-size: 48px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5),
                         -1px -1px 2px rgba(255, 255, 255, 0.3);
             z-index: 2;
@@ -27,23 +27,23 @@
         }
         .container {
             width: 100%;
-            height: calc(100vh - 80px);
-            margin-top: 80px;
+            height: calc(100vh - 100px);
+            margin-top: 100px;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
         }
         .person {
-            width: 250px;
-            min-width: 200px;
-            height: 120px;
+            width: 300px;
+            min-width: 250px;
+            height: 150px;
             margin: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
-            font-size: 24px;
+            font-size: 32px;
             text-align: center;
             cursor: pointer;
             transition: opacity 1s ease, transform 0.3s ease, box-shadow 0.3s ease;
@@ -52,8 +52,16 @@
             border-radius: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5),
                         -1px -1px 2px rgba(255, 255, 255, 0.3);
-            padding: 10px;
+            padding: 15px;
             box-sizing: border-box;
+        }
+        .person.gen3.four-children,
+        .person.gen4.four-children {
+            width: 220px; /* Smaller for 4-child generations */
+            min-width: 200px;
+            height: 120px;
+            font-size: 28px; /* Slightly smaller font to fit */
+            padding: 10px;
         }
         .person:hover {
             transform: translateZ(30px);
@@ -83,16 +91,16 @@
             position: fixed;
             top: 15px;
             right: 15px;
-            padding: 20px 40px;
+            padding: 25px 50px;
             background-color: #333;
             color: white;
             border: none;
             cursor: pointer;
-            font-size: 24px;
+            font-size: 36px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             transform: translateZ(20px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
+            border-radius: 12px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             z-index: 3;
         }
@@ -108,7 +116,7 @@
     <button id="backButton" onclick="goBack()" style="display: none;">Back</button>
 
     <script>
-        // Updated Adewunmi Lineage data with revised Ali Adewunmi section
+        // Updated Adewunmi Lineage data
         const familyTree = {
             id: 1,
             name: "Usman Adewunmi",
@@ -141,9 +149,9 @@
                             name: "1st Wife: Wulemotu Adedoyin (Iya Idumota)",
                             level: "gen3",
                             children: [
-                                { id: 9, name: "Tamuriatu Adewunmi Ajayi", level: "gen4" },
-                                { id: 10, name: "Ashimiyu Bolaji Adewunmi", level: "gen4" },
-                                { id: 11, name: "Sulikufuli Ishola Adewunmi", level: "gen4" }
+                                { id: 9, name: "Tamuriatu Adewunmi Ajayi", level: "gen4", fourChildren: true },
+                                { id: 10, name: "Ashimiyu Bolaji Adewunmi", level: "gen4", fourChildren: true },
+                                { id: 11, name: "Sulikufuli Ishola Adewunmi", level: "gen4", fourChildren: true }
                             ]
                         },
                         {
@@ -151,9 +159,9 @@
                             name: "2nd Wife: Ayisatu Adewunmi (Iya Agege)",
                             level: "gen3",
                             children: [
-                                { id: 13, name: "Taofiki Adewunmi", level: "gen4" },
-                                { id: 14, name: "Wahabi Damilare Adewunmi", level: "gen4" },
-                                { id: 15, name: "Ganiyu Idowu Adewunmi", level: "gen4" }
+                                { id: 13, name: "Taofiki Adewunmi", level: "gen4", fourChildren: true },
+                                { id: 14, name: "Wahabi Damilare Adewunmi", level: "gen4", fourChildren: true },
+                                { id: 15, name: "Ganiyu Idowu Adewunmi", level: "gen4", fourChildren: true }
                             ]
                         },
                         {
@@ -161,10 +169,10 @@
                             name: "3rd Wife: Adedoja Adewunmi (Iya Mewa)",
                             level: "gen3",
                             children: [
-                                { id: 17, name: "Yisawu Adewunmi (Baba Pota)", level: "gen4" },
-                                { id: 18, name: "Nurudeen Adewunmi (Baba Ilupeju)", level: "gen4" },
-                                { id: 19, name: "Afusatu Adewunmi", level: "gen4" },
-                                { id: 20, name: "Muinatu Adewunmi", level: "gen4" }
+                                { id: 17, name: "Yisawu Adewunmi (Baba Pota)", level: "gen4", fourChildren: true },
+                                { id: 18, name: "Nurudeen Adewunmi (Baba Ilupeju)", level: "gen4", fourChildren: true },
+                                { id: 19, name: "Afusatu Adewunmi", level: "gen4", fourChildren: true },
+                                { id: 20, name: "Muinatu Adewunmi", level: "gen4", fourChildren: true }
                             ]
                         },
                         {
@@ -172,9 +180,9 @@
                             name: "4th Wife: Munira Adewunmi (Iya Ifo)",
                             level: "gen3",
                             children: [
-                                { id: 22, name: "Idaya Adewunmi", level: "gen4" },
-                                { id: 23, name: "Wosila Adewunmi (Iya Owode)", level: "gen4" },
-                                { id: 24, name: "Taliat Adewunmi", level: "gen4" }
+                                { id: 22, name: "Idaya Adewunmi", level: "gen4", fourChildren: true },
+                                { id: 23, name: "Wosila Adewunmi (Iya Owode)", level: "gen4", fourChildren: true },
+                                { id: 24, name: "Taliat Adewunmi", level: "gen4", fourChildren: true }
                             ]
                         }
                     ]
@@ -193,7 +201,7 @@
         // Function to create a rectangle
         function createRectangle(member) {
             const div = document.createElement('div');
-            div.className = `person ${member.level}`;
+            div.className = `person ${member.level}${member.fourChildren ? ' four-children' : ''}`;
             div.textContent = member.name;
             div.dataset.id = member.id;
             div.addEventListener('click', () => showChildren(member));
