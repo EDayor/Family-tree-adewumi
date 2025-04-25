@@ -6,7 +6,7 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            overflow-x: auto;
+            overflow-x: hidden;
             background: #f0f0f0;
             perspective: 1000px;
         }
@@ -55,27 +55,55 @@
             padding: 15px;
             box-sizing: border-box;
         }
-        .person.gen3.four-children,
-        .person.gen4.four-children {
-            width: 220px; /* Smaller for 4-child generations */
-            min-width: 200px;
-            height: 120px;
-            font-size: 28px; /* Slightly smaller font to fit */
-            padding: 10px;
-        }
         .person:hover {
             transform: translateZ(30px);
             box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4), 0 8px 8px rgba(0, 0, 0, 0.3);
         }
         .children-row {
+            position: relative;
             display: flex;
             flex-direction: row;
-            justify-content: center;
+            justify-content: flex-start;
             flex-wrap: nowrap;
             gap: 10px;
             overflow-x: auto;
             width: 100%;
             padding: 10px;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        .children-row::-webkit-scrollbar {
+            height: 8px;
+        }
+        .children-row::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 4px;
+        }
+        .children-row::-webkit-scrollbar-track {
+            background: #ddd;
+        }
+        .scroll-arrow {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1;
+            font-size: 24px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .children-row.scrollable .scroll-arrow {
+            opacity: 1;
         }
         .hidden {
             opacity: 0;
@@ -87,6 +115,8 @@
         .gen2 { background-color: #57a0ce; }
         .gen3 { background-color: #ffa500; }
         .gen4 { background-color: #ff7575; }
+        .gen5 { background-color: #6b7280; }
+        .gen6 { background-color: #a78bfa; }
         #backButton {
             position: fixed;
             top: 15px;
@@ -149,9 +179,9 @@
                             name: "1st Wife: Wulemotu Adedoyin (Iya Idumota)",
                             level: "gen3",
                             children: [
-                                { id: 9, name: "Tamuriatu Adewunmi Ajayi", level: "gen4", fourChildren: true },
-                                { id: 10, name: "Ashimiyu Bolaji Adewunmi", level: "gen4", fourChildren: true },
-                                { id: 11, name: "Sulikufuli Ishola Adewunmi", level: "gen4", fourChildren: true }
+                                { id: 9, name: "Tamuriatu Adewunmi Ajayi", level: "gen4" },
+                                { id: 10, name: "Ashimiyu Bolaji Adewunmi", level: "gen4" },
+                                { id: 11, name: "Sulikufuli Ishola Adewunmi", level: "gen4" }
                             ]
                         },
                         {
@@ -159,9 +189,57 @@
                             name: "2nd Wife: Ayisatu Adewunmi (Iya Agege)",
                             level: "gen3",
                             children: [
-                                { id: 13, name: "Taofiki Adewunmi", level: "gen4", fourChildren: true },
-                                { id: 14, name: "Wahabi Damilare Adewunmi", level: "gen4", fourChildren: true },
-                                { id: 15, name: "Ganiyu Idowu Adewunmi", level: "gen4", fourChildren: true }
+                                {
+                                    id: 13,
+                                    name: "Taofiki Adewunmi",
+                                    level: "gen4",
+                                    children: [
+                                        {
+                                            id: 25,
+                                            name: "1st Wife: Abibatu Adewunmi",
+                                            level: "gen5",
+                                            children: [
+                                                { id: 29, name: "Musibau Adewunmi", level: "gen6" },
+                                                { id: 30, name: "Kudirat Adewunmi", level: "gen6" },
+                                                { id: 31, name: "Fatai Adewunmi", level: "gen6" },
+                                                { id: 32, name: "Wasiu Adewunmi", level: "gen6" },
+                                                { id: 33, name: "Nureni Adewunmi", level: "gen6" },
+                                                { id: 34, name: "Isiaka Adewunmi", level: "gen6" }
+                                            ]
+                                        },
+                                        {
+                                            id: 26,
+                                            name: "2nd Wife: Suebatu Adewunmi",
+                                            level: "gen5",
+                                            children: [
+                                                { id: 35, name: "Sikiru Adewunmi", level: "gen6" },
+                                                { id: 36, name: "Sulaimon Adewunmi", level: "gen6" }
+                                            ]
+                                        },
+                                        {
+                                            id: 27,
+                                            name: "3rd Wife: Shifau Adewunmi",
+                                            level: "gen5",
+                                            children: [
+                                                { id: 37, name: "Taiwo Adewunmi", level: "gen6" },
+                                                { id: 38, name: "Kehinde Adewunmi", level: "gen6" },
+                                                { id: 39, name: "Sadia Adewunmi", level: "gen6" },
+                                                { id: 40, name: "Saka Adewunmi", level: "gen6" }
+                                            ]
+                                        },
+                                        {
+                                            id: 28,
+                                            name: "4th Wife: Lateefatu Adewunmi",
+                                            level: "gen5",
+                                            children: [
+                                                { id: 41, name: "Jamiu Adewunmi", level: "gen6" },
+                                                { id: 42, name: "Fathima Adewunmi", level: "gen6" }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                { id: 14, name: "Wahabi Damilare Adewunmi", level: "gen4" },
+                                { id: 15, name: "Ganiyu Idowu Adewunmi", level: "gen4" }
                             ]
                         },
                         {
@@ -169,10 +247,10 @@
                             name: "3rd Wife: Adedoja Adewunmi (Iya Mewa)",
                             level: "gen3",
                             children: [
-                                { id: 17, name: "Yisawu Adewunmi (Baba Pota)", level: "gen4", fourChildren: true },
-                                { id: 18, name: "Nurudeen Adewunmi (Baba Ilupeju)", level: "gen4", fourChildren: true },
-                                { id: 19, name: "Afusatu Adewunmi", level: "gen4", fourChildren: true },
-                                { id: 20, name: "Muinatu Adewunmi", level: "gen4", fourChildren: true }
+                                { id: 17, name: "Yisawu Adewunmi (Baba Pota)", level: "gen4" },
+                                { id: 18, name: "Nurudeen Adewunmi (Baba Ilupeju)", level: "gen4" },
+                                { id: 19, name: "Afusatu Adewunmi", level: "gen4" },
+                                { id: 20, name: "Muinatu Adewunmi", level: "gen4" }
                             ]
                         },
                         {
@@ -180,9 +258,9 @@
                             name: "4th Wife: Munira Adewunmi (Iya Ifo)",
                             level: "gen3",
                             children: [
-                                { id: 22, name: "Idaya Adewunmi", level: "gen4", fourChildren: true },
-                                { id: 23, name: "Wosila Adewunmi (Iya Owode)", level: "gen4", fourChildren: true },
-                                { id: 24, name: "Taliat Adewunmi", level: "gen4", fourChildren: true }
+                                { id: 22, name: "Idaya Adewunmi", level: "gen4" },
+                                { id: 23, name: "Wosila Adewunmi (Iya Owode)", level: "gen4" },
+                                { id: 24, name: "Taliat Adewunmi", level: "gen4" }
                             ]
                         }
                     ]
@@ -201,7 +279,7 @@
         // Function to create a rectangle
         function createRectangle(member) {
             const div = document.createElement('div');
-            div.className = `person ${member.level}${member.fourChildren ? ' four-children' : ''}`;
+            div.className = `person ${member.level}`;
             div.textContent = member.name;
             div.dataset.id = member.id;
             div.addEventListener('click', () => showChildren(member));
@@ -224,6 +302,23 @@
                     childrenContainer.appendChild(childRect);
                     setTimeout(() => childRect.classList.add('visible'), 10);
                 });
+
+                // Add scroll arrow for rows with 4 or more children
+                if (node.children.length >= 4) {
+                    const scrollArrow = document.createElement('button');
+                    scrollArrow.className = 'scroll-arrow';
+                    scrollArrow.innerHTML = '←';
+                    scrollArrow.onclick = () => childrenContainer.scrollBy({ left: -200, behavior: 'smooth' });
+                    childrenContainer.appendChild(scrollArrow);
+
+                    // Check if row is scrollable
+                    setTimeout(() => {
+                        if (childrenContainer.scrollWidth > childrenContainer.clientWidth) {
+                            childrenContainer.classList.add('scrollable');
+                        }
+                    }, 20);
+                }
+
                 container.appendChild(childrenContainer);
             }
         }
